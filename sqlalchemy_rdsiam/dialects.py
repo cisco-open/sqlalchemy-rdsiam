@@ -38,9 +38,11 @@ try:
             return dbapi_psycopg2
 
 except ImportError:
+    from sqlalchemy.dialects.postgresql.base import PGDialect
+
     _has_sqlalchemy_psycopg2 = False
 
-    class PGDialect_psycopg2rdsiam:  # type: ignore
+    class PGDialect_psycopg2rdsiam(PGDialect):  # type: ignore
         @classmethod
         def dbapi(cls: Type) -> ModuleType:
             return cls.import_dbapi()
@@ -77,9 +79,11 @@ try:
             return AsyncAdapt_asyncpg_dbapi(asyncpg=dbapi_asyncpg)
 
 except ImportError:
+    from sqlalchemy.dialects.postgresql.base import PGDialect
+
     _has_sqlalchemy_asyncpg = False
 
-    class PGDialect_asyncpgrdsiam:  # type: ignore
+    class PGDialect_asyncpgrdsiam(PGDialect):  # type: ignore
         @classmethod
         def dbapi(cls: Type) -> ModuleType:
             return cls.import_dbapi()

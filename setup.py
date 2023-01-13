@@ -66,6 +66,7 @@ setup(
         "SQLAlchemy dialects to connect to Amazon RDS instances "
         "with IAM authentication"
     ),
+    url="https://github.com/cisco-open/sqlalchemy-rdsiam",
     long_description=_get_readme_contents(),
     long_description_content_type="text/markdown",
     packages=["sqlalchemy_rdsiam"],
