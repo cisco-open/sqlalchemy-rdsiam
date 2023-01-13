@@ -86,10 +86,11 @@ along with the package for testing, or to streaming provisioning. To this end,
 the CA bundle is automatically downloaded when installing the Python package,
 and you can opt-in to use it directly.
 
-**Note: Make sure this is in line with your security posture requirements first.**
+> **Note**: make sure this is in line with your **security posture requirements**
+> first.
 
 The package can directly set `sslrootcert` to the certificate bundle for all
-Amazon RDS regions. This is disabled by default. To do set, set the query
+Amazon RDS regions. This is disabled by default. To do so, set the query
 parameter `rds_sslrootcert` to `true`:
 
 ```sh
