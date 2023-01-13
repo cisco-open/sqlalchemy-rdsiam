@@ -61,7 +61,7 @@ repository:
 
 # See https://developer.github.com/v3/teams/#add-or-update-team-repository for available options
 teams:
-  - name: sqlalchemy
+  - name: sqlalchemy-rdsiam
     permission: triage
   - name: sqlalchemy-admins
     permission: admin
