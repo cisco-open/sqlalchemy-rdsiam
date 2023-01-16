@@ -82,6 +82,26 @@ class TestConnectionSQLAlchemy:
         )
 
 
+@pytest.mark.parametrize(
+    "try_connect_fn,engine_prefix",
+    [
+        pytest.param(
+            "try_connect_sync",
+            "postgresql+psycopg2rdsiam",
+            marks=pytest.mark.skipif(
+                _has_sqlalchemy_psycopg2, reason="psycopg2 is available"
+            ),
+        )
+    ],
+)
+def test_dialect_not_available(request, try_connect_fn, engine_prefix):
+    """Check that using an unsupported dialect raises the right error."""
+    try_connect = request.getfixturevalue(try_connect_fn)
+
+    with pytest.raises(NotImplementedError):
+        try_connect(f"{engine_prefix}://some-url")
+
+
 @pytest.mark.skipif(
     not _has_sqlalchemy_psycopg2,
     reason="psycopg2 is not supported",
