@@ -27,6 +27,11 @@ try:
     _has_sqlalchemy_psycopg2 = True
 
     class PGDialect_psycopg2rdsiam(PGDialect_psycopg2):
+
+        supports_statement_cache = PGDialect_psycopg2.__dict__.get(
+            "supports_statement_cache", None
+        )
+
         @classmethod
         def dbapi(cls: Type) -> ModuleType:
             return cls.import_dbapi()
@@ -66,6 +71,11 @@ try:
     _has_sqlalchemy_asyncpg = True
 
     class PGDialect_asyncpgrdsiam(PGDialect_asyncpg):
+
+        supports_statement_cache = PGDialect_asyncpg.__dict__.get(
+            "supports_statement_cache", None
+        )
+
         @classmethod
         def dbapi(cls: Type) -> ModuleType:
             return cls.import_dbapi()
