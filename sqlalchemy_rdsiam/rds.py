@@ -21,6 +21,6 @@ from typing import Any
 import boto3
 
 
-@functools.lru_cache
+@functools.lru_cache()
 def rds_client(region_name: str) -> Any:
     return boto3.client("rds", region_name=region_name)
